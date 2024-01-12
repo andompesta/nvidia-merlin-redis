@@ -76,6 +76,12 @@ perf_analyzer -m ensemble-model -u <triton ip addr>:8000 --input-data=../sample_
 
 For the first two optimizations (consolidating the stages and removing the Feast SDK), no changes need to be made from the jupyter notebooks in the [online-multi-stage-recsys](../online-multi-stage-recsys) directory. The only change is that the ``perf_analyzer`` tool is used to benchmark the pipelines.
 
+rev-1-baseline --> rev-2-stage-consolidation: uinify `2-redis-vss-candidates` and `3-query-item-features` into a single stage
+rev-2-stage-consolidation --> rev-3-remove-feast-sdk: remove feast in favour of redis client with `hgetall`
+rev-3-remove-feast-sdk --> rev-4-vss-retrieval: change way redis embedding search is created
+rev4 --> rev5: implementation [responce_cache](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/response_cache.html)
+
+
 For [03-remove-feast-sdk](../online-multi-stage-recsys/revisions/03-remove-feast-sdk), the feature store is setup with the [03-feastless-feature-store-setup.ipynb](../online-multi-stage-recsys/03-feastless-feature-store-setup.ipynb) notebook. This notebook is the same as the [01-Building-Online-Multi-Stage-Recsys-Components.ipynb](../online-multi-stage-recsys/01-Building-Online-Multi-Stage-Recsys-Components.ipynb) notebook except that the Feast SDK is not used to create the feature store and the data is stored in native Redis data structures instead of Feast's protobuf format.
 
 For the last two, [04-vss-retrieval](../online-multi-stage-recsys/revisions/04-vss-retrieval) and [05-vss-retrieval-opt](../online-multi-stage-recsys/revisions/05-vss-retrieval-opt), the feature store is setup with the [04-vss-feature-store-setup.ipynb](../online-multi-stage-recsys/04-vss-feature-store-setup.ipynb) notebook. This notebook is the same as the [01-Building-Online-Multi-Stage-Recsys-Components.ipynb](../online-multi-stage-recsys/01-Building-Online-Multi-Stage-Recsys-Components.ipynb) notebook except that the vector index is created using the same data as the feature store data meaning that the embedings are stored as values within each item's hash map.

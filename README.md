@@ -1,6 +1,6 @@
 # Recommendation Systems with NVIDIA Merlin and Redis
 
-🚀 This repository holds the assets that supplement the article "*Offline to Online: Feature Storage for Real-time Recommendation Systems with NVIDIA Merlin*" written originally for the [NVIDIA Developer Blog](https://developer.nvidia.com/blog/).
+🚀 This repository holds the assets that supplement the article "*Offline to Online: Feature Storage for Real-time Recommendation Systems with NVIDIA Merlin*" written originally for the [NVIDIA Developer Blog](https://developer.nvidia.com/blog/offline-to-online-feature-storage-for-real-time-recommendation-systems-with-nvidia-merlin/).
 
 ## Recommendation System Architectures
 
